@@ -1,7 +1,7 @@
 {
     "type": "package",
     "name": "ursi/elm-throttle",
-    "summary": "todo",
+    "summary": "Easily throttle the execution of commands",
     "license": "BSD-3-Clause",
     "version": "1.0.0",
     "exposed-modules": ["Throttle"],
