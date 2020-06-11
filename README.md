@@ -18,14 +18,14 @@ init _ =
 
 
 type Msg
-    = UpdateThrottle Posix
+    = UpdateThrottle
     | MouseMoved MousePosition
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        UpdateThrottle _ ->
+        UpdateThrottle ->
             let
                 ( newThrottle, cmd ) =
                     Throttle.update model.throttle
@@ -46,7 +46,7 @@ subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.batch
         [ Throttle.ifNeeded
-            (Time.every 100 UpdateThrottle)
+            (Time.every 100 (\_ -> UpdateThrottle))
             model.throttle
         , Browser.Events.onMouseMove mousePositionDecoder
         ]
